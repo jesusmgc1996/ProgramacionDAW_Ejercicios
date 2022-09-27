@@ -13,7 +13,7 @@ public class Ejercicio01_PedirDosVariablesYMostrarLaMayor {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Introduzca un número flotante: ");
-		float num1 = sc.nextFloat();		
+		float num1 = sc.nextFloat();
 		System.out.println("Introduzca otro número flotante: ");
 		float num2 = sc.nextFloat();
 		
