@@ -3,8 +3,8 @@ package Capitulo02.Bloque01;
 import java.util.Scanner;
 
 /*
- * 1º.- Realiza un ejercicio que pida dos variables al usuario,
- * tras lo cual, muestre en pantalla el número mayor de los dos introducidos.
+ * 1º.- Realiza un ejercicio que pida dos variables al usuario, tras lo
+ * cual, muestre en pantalla el número mayor de los dos introducidos.
 */
 
 public class Ejercicio01_PedirDosVariablesYMostrarLaMayor {
@@ -19,8 +19,10 @@ public class Ejercicio01_PedirDosVariablesYMostrarLaMayor {
 		
 		if (num1 > num2)
 			System.out.println("El número mayor es: " + num1);
-		else
+		if (num1 < num2)
 			System.out.println("El número mayor es: " + num2);
+		if (num1 == num2)
+			System.out.println("Los números son iguales.");
 		
 	}
 
