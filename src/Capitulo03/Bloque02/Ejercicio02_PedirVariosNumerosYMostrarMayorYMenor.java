@@ -18,7 +18,7 @@ public class Ejercicio02_PedirVariosNumerosYMostrarMayorYMenor {
 		str = JOptionPane.showInputDialog("¿Cuántos números quiere que se pidan?");
 		cantidad = Integer.parseInt(str);
 		
-		for (int i = 0; num != 0 && i < cantidad; i++) {
+		for (int i = 0; i < cantidad; i++) {
 			if (i == 0) {
 				str = JOptionPane.showInputDialog("Introduzca un número:");
 				mayor = Integer.parseInt(str);
