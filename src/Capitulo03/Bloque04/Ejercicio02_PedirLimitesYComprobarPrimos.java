@@ -27,11 +27,11 @@ public class Ejercicio02_PedirLimitesYComprobarPrimos {
 				}
 				cont++;
 			}
-			limiteInf++;
 			if (primo == true)
-				System.out.println((limiteInf - 1) + " es primo");
+				System.out.println(limiteInf + " es primo");
 			else
-				System.out.println((limiteInf - 1) + " es compuesto");			
+				System.out.println(limiteInf + " es compuesto");	
+			limiteInf++;
 			cont = 2;
 			primo = true;
 		}
