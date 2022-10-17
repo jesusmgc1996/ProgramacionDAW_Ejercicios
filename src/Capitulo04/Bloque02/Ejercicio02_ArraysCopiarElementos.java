@@ -33,7 +33,7 @@ public class Ejercicio02_ArraysCopiarElementos {
 		
 		for (int i = 0; i < numeros3.length; i++) {
 			if (i % 2 != 0) numeros3[i] = numeros[i];
-			if (i % 2 == 0) numeros3[i] = numeros2[i];
+			else numeros3[i] = numeros2[i];
 			System.out.print(numeros3[i] + " ");
 		}
 
