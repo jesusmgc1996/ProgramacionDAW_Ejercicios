@@ -15,7 +15,7 @@ public class Ejercicio04_ArrayPedirValorYBuscarlo {
 
 	public static void main(String[] args) {
 		int numeros[] = new int[150];
-		int num, posicion = 0;
+		int num;
 		boolean numExiste = false;
 		
 		for (int i = 0; i < numeros.length; i++) {
@@ -26,15 +26,13 @@ public class Ejercicio04_ArrayPedirValorYBuscarlo {
 		num = Integer.parseInt(JOptionPane.showInputDialog("Introduzca un número:"));
 		
 		for (int i = 0; i < numeros.length; i++) {
-			if (numeros[i] == num && numExiste == false) {
+			if (numeros[i] == num) {
 				numExiste = true;
-				posicion = i;
+				System.out.println("\nEl número se encuentra en la posición " + i);
 			}
 		}
 
-		if (numExiste == true) System.out.println("\nEl número se encuentra en"
-													+ " la posición " + posicion);
-		else System.out.println("\nEl número no se ha encontrado.");
+		if (numExiste == false) System.out.println("\nEl número no se ha encontrado.");
 
 	}
 
