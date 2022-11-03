@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 public class Ejercicio02_ArrayDesplazarIntervalo {
 
 	public static void main(String[] args) {
-		int numeros[] = utils.UtilsArrays.creaArrayNumerosUsuario(10);
+		int numeros[] = utils.UtilsArrays.creaArrayNumerosAzar(10, 0, 100);
 		utils.UtilsArrays.mostrarArray(numeros);
 		mostrarIndicesArray(numeros);
 		int inicial = pedirPosicionInicial();
@@ -50,14 +50,14 @@ public class Ejercicio02_ArrayDesplazarIntervalo {
 	}
 	
 	public static void ordenarArrayIntervalo(int array[], int inicial, int fin) {
-		int num = array[inicial - 1];
-		for (int i = inicial - 1; i > 0; i--)
-			array[i] = array[i - 1];
-		array[0] = num;
-		num = array[array.length - 1];
+		int num1 = array[inicial - 1];
+		int num2 = array[array.length - 1];
 		for (int i = array.length - 1; i > fin; i--)
 			array[i] = array[i - 1];
-		array[fin + 1] = num;
+		array[fin + 1] = num1;
+		for (int i = inicial - 1; i > 0; i--)
+			array[i] = array[i - 1];
+		array[0] = num2;
 	}
 
 }
