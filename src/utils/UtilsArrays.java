@@ -2,7 +2,7 @@ package utils;
 
 /**
  * 
- * @author rafae
+ * @author jesus
  *
  */
 public class UtilsArrays {
@@ -105,7 +105,7 @@ public class UtilsArrays {
 		for (int i = 0; i < array.length; i++) {
 			for (int j = 0; j < array[i].length; j++)
 				System.out.print(array[i][j] + "\t");
-			System.out.println("\n");
+			System.out.println();
 		}
 		System.out.println();
 	}
