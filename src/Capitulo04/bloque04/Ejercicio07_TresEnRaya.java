@@ -9,9 +9,18 @@ import javax.swing.JOptionPane;
 public class Ejercicio07_TresEnRaya {
 
 	public static void main(String[] args) {
+		String nombres[] = pedirNombres(2);
 		char matriz[][] = crearTablero(4,4);
 		mostrarTablero(matriz);
-		turnos(matriz);
+		turnos(matriz, nombres);
+	}
+	
+	public static String[] pedirNombres (int num) {
+		String array[] = new String[num];
+		for (int i = 0; i < array.length; i++)
+			array[i] = JOptionPane.showInputDialog("Introduzca el "
+					+ "nombre del / de la jugador/a " + (i + 1) + ":");
+		return array;
 	}
 	
 	public static char[][] crearTablero (int filas, int columnas) {
@@ -38,55 +47,31 @@ public class Ejercicio07_TresEnRaya {
 		System.out.println();
 	}
 	
-	public static void turnos (char array[][]) {
-		int numColumna = 0, turno = 1;
-		int fila;
-		String columna;
-		char charColumna;
-		do {
-			if (turno % 2 != 0) {
-				do {
-					fila = Integer.parseInt(JOptionPane.showInputDialog("Turno del"
-							+ " jugador 1. Introduzca la fila:"));
-					columna = JOptionPane.showInputDialog("Turno del jugador 1."
-							+ " Introduzca la columna:");
-					charColumna = columna.charAt(0);
-					if (charColumna == 'A') numColumna = 0;
-					if (charColumna == 'B') numColumna = 1;
-					if (charColumna == 'C') numColumna = 2;
-					if (array[fila][numColumna] != '□')
-						JOptionPane.showMessageDialog(null, "Esa casilla está ocupada");
-				} while (array[fila][numColumna] != '□');
-				array [fila][numColumna] = 'O';
-				mostrarTablero(array);
-			}
-			if (turno % 2 == 0) {
-				do {
-					fila = Integer.parseInt(JOptionPane.showInputDialog("Turno del"
-							+ " jugador 2. Introduzca la fila:"));
-					columna = JOptionPane.showInputDialog("Turno del jugador 2."
-							+ " Introduzca la columna:");
-					charColumna = columna.charAt(0);
-					if (charColumna == 'A') numColumna = 0;
-					if (charColumna == 'B') numColumna = 1;
-					if (charColumna == 'C') numColumna = 2;
-					if (array[fila][numColumna] != '□')
-						JOptionPane.showMessageDialog(null, "Esa casilla está ocupada");
-				} while (array[fila][numColumna] != '□');
-				array [fila][numColumna] = 'X';
-				mostrarTablero(array);
-			}
-			turno++;
-		} while (!juegoTerminado(array) && turno < 10);
-		if (!juegoTerminado(array) && turno == 10)
-			JOptionPane.showMessageDialog(null, "El juego ha terminado. La partida"
-					+ " ha acabado en tablas.");
-		if (juegoTerminado(array) && turno % 2 == 0)
-			JOptionPane.showMessageDialog(null, "El juego ha terminado. El ganador"
-					+ " es el jugador 1.");
-		if (juegoTerminado(array) && turno % 2 != 0)
-			JOptionPane.showMessageDialog(null, "El juego ha terminado. El ganador"
-					+ " es el jugador 2.");
+	public static void turnos (char array[][], String nombres[]) {
+		int numColumna = 0, fila, i = 0;
+		for (i = 0; i < 9 && !juegoTerminado(array); i++) {
+			do {
+				fila = Integer.parseInt(JOptionPane.showInputDialog("Turno "
+						+ "de " + nombres[i % 2] + ". Introduzca la fila:"));
+				String columna = JOptionPane.showInputDialog("Turno de "
+						+ nombres[i % 2] + ". Introduzca la columna:");
+				char charColumna = columna.charAt(0);
+				if (charColumna == 'A') numColumna = 0;
+				if (charColumna == 'B') numColumna = 1;
+				if (charColumna == 'C') numColumna = 2;
+				if (array[fila][numColumna] != '□')
+					JOptionPane.showMessageDialog(null, "Esa casilla está ocupada.");
+			} while (array[fila][numColumna] != '□');
+			if (i % 2 == 0) array [fila][numColumna] = 'O';
+			if (i % 2 == 1) array [fila][numColumna] = 'X';
+			mostrarTablero(array);
+		}
+		if (!juegoTerminado(array)) JOptionPane.showMessageDialog(null, "El"
+				+ " juego ha terminado. La partida ha acabado en tablas.");
+		else if (i % 2 == 1) JOptionPane.showMessageDialog(null, "El juego "
+				+ "ha terminado. El / la ganador/a es " + nombres[0] + ".");
+		else JOptionPane.showMessageDialog(null, "El juego ha terminado."
+				+ " El / la ganador/a es " + nombres[1] + ".");
 	}
 	
 	public static boolean juegoTerminado (char array[][]) {
