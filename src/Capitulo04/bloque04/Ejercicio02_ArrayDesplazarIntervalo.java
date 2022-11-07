@@ -15,11 +15,14 @@ import javax.swing.JOptionPane;
 public class Ejercicio02_ArrayDesplazarIntervalo {
 
 	public static void main(String[] args) {
+		int inicial, fin;
 		int numeros[] = utils.UtilsArrays.creaArrayNumerosUsuario(10);
 		utils.UtilsArrays.mostrarArray(numeros);
 		mostrarIndicesArray(numeros);
-		int inicial = pedirPosicionInicial();
-		int fin = pedirPosicionFinal(inicial);
+		do {
+			inicial = pedirPosicionInicial();
+			fin = pedirPosicionFinal(inicial);			
+		} while (fin <= inicial);
 		ordenarArrayIntervalo(numeros, inicial, fin);
 		utils.UtilsArrays.mostrarArrayOrdenado(numeros);
 	}
@@ -49,13 +52,13 @@ public class Ejercicio02_ArrayDesplazarIntervalo {
 		do {
 			fin = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la posición"
 					+ " final:\n(número entre 0 y 9)"));
-			if (fin <= inicial) JOptionPane.showMessageDialog(null, "La posición"
-					+ " final debe ser mayor que la posición inicial.");
-			if (fin < 0) JOptionPane.showMessageDialog(null, "La posición final"
-					+ " no puede ser menor que 0.");
+			if (fin <= inicial) {
+				JOptionPane.showMessageDialog(null, "La posición final debe ser mayor"
+						+ " que la posición inicial.");
+			}
 			if (fin > 9) JOptionPane.showMessageDialog(null, "La posición final"
 					+ " no puede ser mayor que 9.");
-		} while (fin <= inicial || fin < 0 || fin > 9);
+		} while (fin > 9);
 		return fin;
 	}
 	
