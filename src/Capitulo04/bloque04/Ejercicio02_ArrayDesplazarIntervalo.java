@@ -35,7 +35,11 @@ public class Ejercicio02_ArrayDesplazarIntervalo {
 		int inicial;
 		do {
 			inicial = Integer.parseInt(JOptionPane.showInputDialog("Introduzca "
-					+ "la posición menor:\n(número entre 0 y 9)"));
+					+ "la posición inicial:\n(número entre 0 y 9)"));
+			if (inicial < 0) JOptionPane.showMessageDialog(null, "La posición inicial"
+					+ " no puede ser menor que 0.");
+			if (inicial > 9) JOptionPane.showMessageDialog(null, "La posición inicial"
+					+ " no puede ser mayor que 9.");
 		} while (inicial < 0 || inicial > 9);
 		return inicial;
 	}
@@ -44,20 +48,40 @@ public class Ejercicio02_ArrayDesplazarIntervalo {
 		int fin;
 		do {
 			fin = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la posición"
-					+ " mayor:\n(número entre 0 y 9)"));
-		} while (inicial > fin || fin < 0 || fin > 9);
+					+ " final:\n(número entre 0 y 9)"));
+			if (fin <= inicial) JOptionPane.showMessageDialog(null, "La posición"
+					+ " final debe ser mayor que la posición inicial.");
+			if (fin < 0) JOptionPane.showMessageDialog(null, "La posición final"
+					+ " no puede ser menor que 0.");
+			if (fin > 9) JOptionPane.showMessageDialog(null, "La posición final"
+					+ " no puede ser mayor que 9.");
+		} while (fin <= inicial || fin < 0 || fin > 9);
 		return fin;
 	}
 	
 	public static void ordenarArrayIntervalo(int array[], int inicial, int fin) {
-		int num1 = array[inicial - 1];
-		int num2 = array[array.length - 1];
-		for (int i = array.length - 1; i > fin; i--)
-			array[i] = array[i - 1];
-		array[fin + 1] = num1;
-		for (int i = inicial - 1; i > 0; i--)
-			array[i] = array[i - 1];
-		array[0] = num2;
+		if (inicial != 0 && fin != 9) {
+			int num1 = array[inicial - 1];
+			int num2 = array[array.length - 1];
+			for (int i = array.length - 1; i > fin; i--)
+				array[i] = array[i - 1];
+			array[fin + 1] = num1;
+			for (int i = inicial - 1; i > 0; i--)
+				array[i] = array[i - 1];
+			array[0] = num2;
+		}
+		if (inicial == 0 && fin != 9) {
+			int num2 = array[array.length - 1];
+			for (int i = array.length - 1; i > fin; i--)
+				array[i] = array[i - 1];
+			array[fin + 1] = num2;
+		}
+		if (inicial != 0 && fin == 9) {
+			int num1 = array[inicial - 1];
+			for (int i = inicial - 1; i > 0; i--)
+				array[i] = array[i - 1];
+			array[0] = num1;
+		}
 	}
 
 }
