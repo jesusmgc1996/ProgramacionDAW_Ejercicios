@@ -1,4 +1,4 @@
-package Capitulo04.bloque05;
+	package Capitulo04.bloque05;
 
 import javax.swing.JOptionPane;
 
@@ -8,12 +8,12 @@ public class Ejercicio04_ArrayBidimensional {
 		int matrix[][] = new int[5][5];
 		fillMatrix(matrix);
 		showMatrix(matrix);
-		positiveMatrix(matrix);
-		diagonalMatrix(matrix);
-		upperTriangularMatrix(matrix);
-		sparseMatrix(matrix);
+		matrixIsPositive(matrix);
+		matrixIsDiagonal(matrix);
+		matrixIsUpperTriangular(matrix);
+		matrixIsSparse(matrix);
 		oneDimensionalArray(matrix);
-		symmetricMatrix(matrix);
+		matrixIsSymmetric(matrix);
 		transposedMatrix(matrix);
 		oppositeMatrix(matrix);
 		deleteRow(matrix);
@@ -35,38 +35,36 @@ public class Ejercicio04_ArrayBidimensional {
 		System.out.println();
 	}
 	
-	public static boolean positiveMatrix (int matrix[][]) {
+	public static boolean matrixIsPositive (int matrix[][]) {
 		for (int i = 0; i < matrix.length; i++)
 			for (int j = 0; j < matrix[i].length; j++)
 				if (matrix[i][j] < 0) return false;
 		return true;
 	}
 	
-	public static boolean diagonalMatrix (int matrix[][]) {
+	public static boolean matrixIsDiagonal (int matrix[][]) {
+		for (int i = 0; i < matrix.length; i++)
+			for (int j = 0; j < matrix[i].length; j++)
+				if (j != i)
+					if (matrix[i][j] != 0) return false;
+		return true;
+	}
+	
+	public static boolean matrixIsUpperTriangular (int matrix[][]) {
 		for (int i = 0; i < matrix.length; i++)
 			for (int j = 0; j < i; j++)
-				if (matrix[i][j] != 0) return false;
-		for (int i = 0; i < matrix.length; i++)
-			for (int j = 0; j > i; j++)
 				if (matrix[i][j] != 0) return false;
 		return true;
 	}
 	
-	public static boolean upperTriangularMatrix (int matrix[][]) {
-		for (int i = 0; i < matrix.length; i++)
-			for (int j = 0; j < i; j++)
-				if (matrix[i][j] != 0) return false;
-		return true;
-	}
-	
-	public static boolean sparseMatrix (int matrix[][]) {
+	public static boolean matrixIsSparse (int matrix[][]) {
 		for (int i = 0; i < matrix.length; i++) {
 			boolean zeroExists = false;
-			for (int j = 0; j < matrix.length; j++)
+			for (int j = 0; j < matrix[i].length; j++)
 				if (matrix[i][j] == 0) zeroExists = true;
 			if (!zeroExists) return false;
 		}
-		for (int i = 0; i < matrix.length; i++) {
+		for (int i = 0; i < matrix[0].length; i++) {
 			boolean zeroExists = false;
 			for (int j = 0; j < matrix.length; j++)
 				if (matrix[j][i] == 0) zeroExists = true;
@@ -75,7 +73,7 @@ public class Ejercicio04_ArrayBidimensional {
 		return true;
 	}
 	
-	public static void oneDimensionalArray (int matrix[][]) {
+	public static int[] oneDimensionalArray (int matrix[][]) {
 		int array[] = new int[matrix.length * matrix[0].length];
 		int k = 0;
 		for (int i = 0; i < matrix.length; i++)
@@ -83,20 +81,22 @@ public class Ejercicio04_ArrayBidimensional {
 				array[k] = matrix[i][j];
 				k++;
 			}
+		return array;
 	}
 	
-	public static boolean symmetricMatrix (int matrix[][]) {
+	public static boolean matrixIsSymmetric (int matrix[][]) {
 		for (int i = 0; i < matrix.length; i++)
 			for (int j = 0; j < matrix[i].length; j++)
 				if (matrix[i][j] != matrix[j][i]) return false;
 		return true;
 	}
 	
-	public static void transposedMatrix (int matrix[][]) {
+	public static int[][] transposedMatrix (int matrix[][]) {
 		int tMatrix[][] = new int[matrix[0].length][matrix.length];
 		for (int i = 0; i < matrix.length; i++)
 			for (int j = 0; j < matrix[0].length; j++)
 				tMatrix[i][j] = matrix[j][i];
+		return tMatrix;
 	}
 	
 	public static void oppositeMatrix (int matrix[][]) {
@@ -105,7 +105,7 @@ public class Ejercicio04_ArrayBidimensional {
 				matrix[i][j] *= -1;
 	}
 	
-	public static void deleteRow (int matrix[][]) {
+	public static int[][] deleteRow (int matrix[][]) {
 		int matrix2[][] = new int[matrix.length - 1][matrix[0].length];
 		int row = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el número"
 				+ " de la fila que quiere eliminar:"));
@@ -116,6 +116,7 @@ public class Ejercicio04_ArrayBidimensional {
 					matrix2[k][j] = matrix[i][j];
 				k++;
 			}
+		return matrix2;
 	}
 
 }
