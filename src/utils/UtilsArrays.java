@@ -23,6 +23,18 @@ public class UtilsArrays {
 	 * 
 	 * @param array
 	 */
+	public static void mostrarArrayConCambios (int[] array) {
+		System.out.println("\nArray con cambios:");
+		for (int i = 0; i < array.length; i++) {
+			System.out.print(array[i] + " ");
+		}
+		System.out.println();
+	}
+	
+	/**
+	 * 
+	 * @param array
+	 */
 	public static void mostrarArrayOrdenado(int array[]) {
 		System.out.println("Array ordenado:");
 		for (int i = 0; i < array.length; i++)
