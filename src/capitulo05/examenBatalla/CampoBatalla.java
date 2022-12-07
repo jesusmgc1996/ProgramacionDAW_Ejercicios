@@ -79,7 +79,7 @@ public class CampoBatalla {
 				malvados[p].setVivo(false);
 				malvadosEliminados++;
 			}
-			if (malvadosEliminados < 20) {
+			if (malvadosEliminados < LONGITUD_ARRAYS) {
 				p = primerHumanoVivo(); // Si hay algún malvado vivo, dispara a los humanos
 				humanos[p].setPuntosVida(humanos[p].getPuntosVida() - (int) Math.round(Math.random() * 20 + 5));
 				humanos[p].setDisparosRecibidos(humanos[p].getDisparosRecibidos() + 1);
@@ -89,10 +89,10 @@ public class CampoBatalla {
 				}
 			}
 			System.out.println(toString());
-		} while (malvadosEliminados < 20 && humanosEliminados < 20);
+		} while (malvadosEliminados < LONGITUD_ARRAYS && humanosEliminados < LONGITUD_ARRAYS);
 		// La batalla acaba cuando uno de los bandos se queda sin personajes vivos
-		if (malvadosEliminados == 20) System.out.println("\nHan ganado los humanos");
-		if (humanosEliminados == 20) System.out.println("\nHan ganado los malvados");
+		if (malvadosEliminados == LONGITUD_ARRAYS) System.out.println("\nHan ganado los humanos");
+		if (humanosEliminados == LONGITUD_ARRAYS) System.out.println("\nHan ganado los malvados");
 	}
 	
 	/**
