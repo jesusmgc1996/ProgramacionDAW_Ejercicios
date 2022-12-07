@@ -3,10 +3,12 @@ package capitulo05.examenBatalla;
 import java.util.Arrays;
 
 public class CampoBatalla {
+	
+	public static int LONGITUD_ARRAYS = 20;
 
 	private String nombre;
-	private Malvado malvados[] = new Malvado[20];
-	private Humano humanos[] = new Humano[20];
+	private Malvado malvados[] = new Malvado[LONGITUD_ARRAYS];
+	private Humano humanos[] = new Humano[LONGITUD_ARRAYS];
 	
 	/**
 	 * 
@@ -14,12 +16,12 @@ public class CampoBatalla {
 	public CampoBatalla() {
 		super();
 		// Se inicializan los personajes
-		for (int i = 0; i < 20; i++) {
+		for (int i = 0; i < humanos.length; i++) {
 			malvados[i] = new Malvado();
 			humanos[i] = new Humano();
 			malvados[i].setNombre("Malvado " + (i + 1));
 			humanos[i].setNombre("Humano " + (i + 1));
-			if (i == 19) { // Se les dobla la vida a los últimos personajes de cada bando
+			if (i == humanos.length - 1) { // Se les dobla la vida a los últimos personajes de cada bando
 				malvados[i].setPuntosVida(malvados[i].getPuntosVida() * 2);
 				humanos[i].setPuntosVida(humanos[i].getPuntosVida() * 2);
 			}
