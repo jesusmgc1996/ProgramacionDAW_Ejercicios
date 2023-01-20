@@ -22,13 +22,19 @@ public class Principal {
 		} while (opt != 0);
 	}
 	
-	// Método para mostrar el menú
+	/**
+	 * Método para mostrar el menú
+	 * @return
+	 */
 	public static int menu() {
 		int opt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la opción deseada:\n0. Salir.\n1. Lista de artículos."
 				+ "\n2. Crear un nuevo artículo.\n3. Eliminar un artículo.\n4. Actualizar un artículo."));
 		return opt;
 	}
 	
+	/**
+	 * Método para ver la lista de artículos
+	 */
 	public static void itemsList() {
 		Iterator<Articulo> items = store.values().iterator();
 		System.out.println("\nArtículos:");
@@ -36,6 +42,9 @@ public class Principal {
 			System.out.println(items.next());
 	}
 	
+	/**
+	 * Método para crear un artículo
+	 */
 	public static void createItem() {
 		String barcode = JOptionPane.showInputDialog("Introduzca el código de barras del artículo:");
 		String name = JOptionPane.showInputDialog("Introduzca el nombre del artículo:");
@@ -44,11 +53,17 @@ public class Principal {
 		store.put(barcode, new Articulo(barcode, name, shelfNum, stock));
 	}
 	
+	/**
+	 * Método para eliminar un artículo
+	 */
 	public static void deleteItem() {
 		String barcode = JOptionPane.showInputDialog("Introduzca el código de barras del artículo que quiere eliminar:");
 		store.remove(barcode);
 	}
 	
+	/**
+	 * Método para actualizar un artículo
+	 */
 	public static void updateItem() {
 		String barcode = JOptionPane.showInputDialog("Introduzca el código de barras del artículo que quiere actualizar:");
 		String name = JOptionPane.showInputDialog("Introduzca el nombre del artículo:");
