@@ -1,4 +1,4 @@
-package capitulo07.bloque03.ejercicio01;
+package capitulo07.bloque03.ejercicio01_PeticionNumeros;
 
 public class NotPairException extends Exception {
 	
