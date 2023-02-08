@@ -100,7 +100,7 @@ public class InsertUpdateDelete {
 		int id, affectedRows = 0;
 		do {
 			id = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el ID del fabricante que quiere actualizar:"));
-			if (!exists(conn,id)) System.out.println("El ID introducido no es válido.\n");
+			if (!exists(conn,id)) JOptionPane.showMessageDialog(null,"El ID introducido no es válido.\n");
 		} while (!exists(conn,id));
 		String cif = JOptionPane.showInputDialog("Introduzca el nuevo CIF del fabricante:");
 		String name = JOptionPane.showInputDialog("Introduzca el nuevo nombre del fabricante:");
@@ -120,7 +120,7 @@ public class InsertUpdateDelete {
 		int id, affectedRows = 0;
 		do {
 			id = Integer.parseInt(JOptionPane.showInputDialog("Introduzca el ID del fabricante que quiere eliminar:"));
-			if (!exists(conn,id)) System.out.println("El ID introducido no es válido.\n");
+			if (!exists(conn,id)) JOptionPane.showMessageDialog(null,"El ID introducido no es válido.\n");
 		} while (!exists(conn,id));
 		affectedRows = s.executeUpdate("delete from tutorialjavacoches.fabricante where id = " + id);
 		System.out.println("Filas afectadas: " + affectedRows + "\n");
