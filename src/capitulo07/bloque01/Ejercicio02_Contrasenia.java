@@ -2,7 +2,7 @@ package capitulo07.bloque01;
 
 import javax.swing.JOptionPane;
 
-public class Ejercicio02_Contraseña {
+public class Ejercicio02_Contrasenia {
 
 	public static void main(String[] args) {
 		String password;
