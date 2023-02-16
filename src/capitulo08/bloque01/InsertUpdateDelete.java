@@ -9,7 +9,11 @@ import java.sql.Statement;
 import javax.swing.JOptionPane;
 
 public class InsertUpdateDelete {
-
+	
+	/**
+	 * Método main
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		int opt;
 		try {
@@ -54,9 +58,9 @@ public class InsertUpdateDelete {
 		int opt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la opción deseada:\n0. Salir\n1. Mostrar registros"
 				+ "\n2. Insertar registro\n3. Actualizar registro\n4. Eliminar registro"));
 		if (opt == 1) select(conn);
-		if (opt == 2) insert(conn);
-		if (opt == 3) update(conn);
-		if (opt == 4) delete(conn);
+		else if (opt == 2) insert(conn);
+		else if (opt == 3) update(conn);
+		else if (opt == 4) delete(conn);
 		return opt;
 	}
 	
