@@ -147,7 +147,7 @@ public class Principal {
 	public static int getNextValid(Connection conn, String table) throws SQLException {
 		PreparedStatement ps = conn.prepareStatement("select max(id) from tutorialjavacoches." + table);
 		ResultSet rs = ps.executeQuery();
-		while (rs.next()) {
+		if (rs.next()) {
 			int id = rs.getInt(1) + 1;
 			rs.close();
 			ps.close();

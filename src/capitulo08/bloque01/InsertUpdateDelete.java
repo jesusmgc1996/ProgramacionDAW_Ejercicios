@@ -15,12 +15,9 @@ public class InsertUpdateDelete {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int opt;
 		try {
 			Connection conn = getConnection();
-			do {
-				opt = menu(conn);
-			} while (opt != 0);
+			menu(conn);
 			conn.close();
 		}
 		catch (ClassNotFoundException ex) {
@@ -54,14 +51,17 @@ public class InsertUpdateDelete {
 	 * @return
 	 * @throws SQLException
 	 */
-	public static int menu(Connection conn) throws SQLException {
-		int opt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la opción deseada:\n0. Salir\n1. Mostrar registros"
-				+ "\n2. Insertar registro\n3. Actualizar registro\n4. Eliminar registro"));
-		if (opt == 1) select(conn);
-		else if (opt == 2) insert(conn);
-		else if (opt == 3) update(conn);
-		else if (opt == 4) delete(conn);
-		return opt;
+	public static void menu(Connection conn) throws SQLException {
+		int opt;
+		do {
+			opt = Integer.parseInt(JOptionPane.showInputDialog("Introduzca la opción deseada:\n0. Salir\n1. Mostrar registros"
+					+ "\n2. Insertar registro\n3. Actualizar registro\n4. Eliminar registro"));
+			if (opt == 1) select(conn);
+			else if (opt == 2) insert(conn);
+			else if (opt == 3) update(conn);
+			else if (opt == 4) delete(conn);
+			
+		} while (opt != 0);
 	}
 	
 	/**
@@ -140,7 +140,7 @@ public class InsertUpdateDelete {
 	public static int getNextValid(Connection conn) throws SQLException {
 		Statement s = (Statement) conn.createStatement();
 		ResultSet rs = s.executeQuery("select max(id) from tutorialjavacoches.fabricante");		
-		while (rs.next()) {
+		if (rs.next()) {
 			int id = rs.getInt(1) + 1;
 			rs.close();
 			s.close();
