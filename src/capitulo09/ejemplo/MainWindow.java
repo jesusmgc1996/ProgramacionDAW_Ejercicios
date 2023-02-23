@@ -15,9 +15,8 @@ public class MainWindow extends JFrame {
 	
 	public MainWindow() {
 		super("Título de la ventana");
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		
-		this.setContentPane(getMainPanel());
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setContentPane(getMainPanel());
 	}
 	
 	/**
@@ -32,8 +31,6 @@ public class MainWindow extends JFrame {
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
-		c.fill = GridBagConstraints.NONE;
-		c.weightx = 0;
 		c.insets = new Insets(10, 10, 10, 10);
 		c.anchor = GridBagConstraints.EAST;
 		
@@ -54,8 +51,6 @@ public class MainWindow extends JFrame {
 		c = new GridBagConstraints();
 		c.gridx = 2;
 		c.gridy = 0;
-		c.fill = GridBagConstraints.NONE;
-		c.weightx = 0;
 		
 		JButton jbt = new JButton("Botón");
 		jpn.add(jbt, c);
@@ -64,8 +59,6 @@ public class MainWindow extends JFrame {
 		c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 1;
-		c.fill = GridBagConstraints.NONE;
-		c.weightx = 0;
 		
 		JLabel jlb2 = new JLabel("Introduzca el identificador:");
 		jpn.add(jlb2, c);
@@ -84,8 +77,6 @@ public class MainWindow extends JFrame {
 		c = new GridBagConstraints();
 		c.gridx = 2;
 		c.gridy = 1;
-		c.fill = GridBagConstraints.NONE;
-		c.weightx = 0;
 		
 		JButton jbt2 = new JButton("Botón");
 		jpn.add(jbt2, c);
