@@ -20,7 +20,6 @@ public class JDBCProperties {
 	private static Properties getProperties() {
 		if (properties == null) {
 			properties = new Properties();
-		    
 			try {
 				File file = new File("./src/capitulo08/jdbc.properties");
 				properties.load(new FileReader(file));
@@ -29,7 +28,6 @@ public class JDBCProperties {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			 
 		}
 		return properties;
 	}
