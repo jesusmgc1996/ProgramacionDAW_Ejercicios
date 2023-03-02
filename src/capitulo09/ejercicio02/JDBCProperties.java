@@ -1,4 +1,4 @@
-package capitulo09.ejercicio03;
+package capitulo09.ejercicio02;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,7 +21,7 @@ public class JDBCProperties {
 		if (properties == null) {
 			properties = new Properties();
 			try {
-				File file = new File("./src/capitulo09/ejercicio03/jdbc.properties");
+				File file = new File("./src/capitulo09/ejercicio02/jdbc.properties");
 				properties.load(new FileReader(file));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();

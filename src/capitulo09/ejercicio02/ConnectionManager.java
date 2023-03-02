@@ -1,4 +1,4 @@
-package capitulo09.ejercicio03;
+package capitulo09.ejercicio02;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
