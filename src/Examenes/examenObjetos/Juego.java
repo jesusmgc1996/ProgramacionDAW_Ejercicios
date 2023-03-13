@@ -13,7 +13,6 @@ public class Juego {
 		Pelota pelota = new Pelota();
 		Ladrillo arrayLadrillosEliminados[] = new Ladrillo[LONGITUD_ARRAY];
 		
-		boolean pelotaTocaLadrillo = false;
 		int ladrillosEliminados = 0;
 		
 		// Se inicializan los ladrillos
@@ -33,11 +32,8 @@ public class Juego {
 				if (ladrillos[i] != null && pelota.getX() > ladrillos[i].getX() &&
 						pelota.getX() < (ladrillos[i].getX() + ladrillos[i].getAncho())
 						&& pelota.getY() > ladrillos[i].getY() &&
-						pelota.getY() < (ladrillos[i].getY() + ladrillos[i].getAlto()))
-					pelotaTocaLadrillo = true;
-
-				// Si una pelota toca un ladrillo, el ladrillo pierde un punto de vida
-				if (ladrillos[i] != null && pelotaTocaLadrillo == true) {
+						pelota.getY() < (ladrillos[i].getY() + ladrillos[i].getAlto())) {
+					// Si una pelota toca un ladrillo, el ladrillo pierde un punto de vida
 					ladrillos[i].setPuntosVida(ladrillos[i].getPuntosVida() - 1);
 					// Si el ladrillo pierde todos los puntos de vida, se elimina
 					if (ladrillos[i].getPuntosVida() == 0) {
@@ -72,7 +68,6 @@ public class Juego {
 					// Se vuelven a inicializar los ladrillos y otras variables para reiniciar el juego
 					for (int i = 0; i < ladrillos.length; i++)
 						ladrillos[i] = new Ladrillo();
-					pelotaTocaLadrillo = false;
 					ladrillosEliminados = 0;
 				}
 			}	
