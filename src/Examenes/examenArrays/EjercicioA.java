@@ -1,4 +1,4 @@
-package Examenes.ExamenArrays;
+package Examenes.examenArrays;
 
 public class EjercicioA {
 

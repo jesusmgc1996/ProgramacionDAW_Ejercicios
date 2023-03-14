@@ -1,4 +1,4 @@
-package Examenes.Examen20221018;
+package Examenes.examen18102022;
 
 /*
  * Crea, al azar, 10 números entre 0 y 100. Muestra cada número

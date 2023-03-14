@@ -1,4 +1,4 @@
-package Examenes.Examen20221018;
+package Examenes.examen18102022;
 
 /*
  *  Muestra en pantalla 10 números PARES generados al azar,

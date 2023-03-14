@@ -1,4 +1,4 @@
-package Examenes.Examen20221018;
+package Examenes.examen18102022;
 
 import javax.swing.JOptionPane;
 

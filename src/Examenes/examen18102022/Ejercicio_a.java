@@ -1,4 +1,4 @@
-package Examenes.Examen20221018;
+package Examenes.examen18102022;
 
 /*
  * Crea una clase con un método “main” que cree 10 variables enteras.
