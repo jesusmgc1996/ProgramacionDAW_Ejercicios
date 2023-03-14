@@ -48,7 +48,7 @@ public class Propiedades {
 		if (propiedades == null) {
 			propiedades = new Properties();
 			try {
-				File file = new File("./src/examen09022023/ejercicio01/properties");
+				File file = new File("./src/Examenes/examen09022023/ejercicio01/properties");
 				propiedades.load(new FileReader(file));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
