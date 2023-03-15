@@ -26,7 +26,7 @@ public class ControladorMateria {
 			ps.setString(1, m.getNombre());
 			ps.setString(2, m.getCodigo());
 			ps.setString(3, m.getUrl());
-			ps.setInt(4, m.getMatricula());
+			ps.setBoolean(4, m.getMatricula());
 			ps.setDate(5, new java.sql.Date(m.getFechaInicio().getTime()));
 			affectedRows = ps.executeUpdate();
 			ps.close();
@@ -56,7 +56,7 @@ public class ControladorMateria {
 				m.setIdNivel(rs.getInt("idNivel"));
 				m.setCodigo(rs.getString("codigo"));
 				m.setUrl(rs.getString("urlClassroom"));
-				m.setMatricula(rs.getInt("admiteMatricula"));
+				m.setMatricula(rs.getBoolean("admiteMatricula"));
 				m.setFechaInicio(rs.getDate("fechaInicio"));
 			}
 			rs.close();
@@ -86,7 +86,7 @@ public class ControladorMateria {
 				m.setIdNivel(rs.getInt(3));
 				m.setCodigo(rs.getString(4));
 				m.setUrl(rs.getString(5));
-				m.setMatricula(rs.getInt(6));
+				m.setMatricula(rs.getBoolean(6));
 				m.setFechaInicio(rs.getDate(7));
 				materias.add(m);
 			}

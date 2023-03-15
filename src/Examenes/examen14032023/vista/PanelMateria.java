@@ -314,12 +314,7 @@ public class PanelMateria extends JPanel {
 			jtfCodigo.setText(m.getCodigo());
 			jtfUrl.setText(m.getUrl());
 			jtfFecha.setText(sdf.format(m.getFechaInicio()));
-			if (m.getMatricula() == 0) {
-				ckbMatricula.setSelected(false);
-			}
-			else {
-				ckbMatricula.setSelected(true);
-			}
+			ckbMatricula.setSelected(m.getMatricula());
 		}
 	}
 	
@@ -355,12 +350,7 @@ public class PanelMateria extends JPanel {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		if (ckbMatricula.isSelected()) {
-			m.setMatricula(1);
-		}
-		else {
-			m.setMatricula(0);
-		}
+		m.setMatricula(ckbMatricula.isSelected());
 		if (ControladorMateria.modificar(m) != 1) {
 			JOptionPane.showMessageDialog(null, "No se ha podido guardar");
 		}

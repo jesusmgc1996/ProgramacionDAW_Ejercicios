@@ -9,7 +9,7 @@ public class Materia {
 	private int idNivel;
 	private String codigo;
 	private String url;
-	private int matricula;
+	private boolean matricula;
 	private Date fechaInicio;
 	
 	/**
@@ -28,7 +28,7 @@ public class Materia {
 	 * @param matricula
 	 * @param fechaInicio
 	 */
-	public Materia(int id, String nombre, int idNivel, String codigo, String url, int matricula, Date fechaInicio) {
+	public Materia(int id, String nombre, int idNivel, String codigo, String url, boolean matricula, Date fechaInicio) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -79,11 +79,11 @@ public class Materia {
 		this.url = url;
 	}
 
-	public int getMatricula() {
+	public boolean getMatricula() {
 		return matricula;
 	}
 
-	public void setMatricula(int matricula) {
+	public void setMatricula(boolean matricula) {
 		this.matricula = matricula;
 	}
 
