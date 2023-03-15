@@ -13,6 +13,7 @@ public class ControladorNivel {
 	
 	/**
 	 * Método para guardar los registros en una lista
+	 * @param id
 	 * @return
 	 */
 	public static List<Nivel> getAll(int id) {

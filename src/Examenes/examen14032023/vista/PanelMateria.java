@@ -23,7 +23,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
@@ -35,10 +34,10 @@ public class PanelMateria extends JPanel {
 	private JLabel lblNewLabel_3;
 	private JPanel panel;
 	private JButton btnSave;
-	private static JComboBox<CentroEducativo> jcbCentro;
+	private JComboBox<CentroEducativo> jcbCentro;
 	private JButton btnNivel;
-	private static JComboBox<Nivel> jcbNivel;
-	private static JComboBox<Materia> jcbMateria;
+	private JComboBox<Nivel> jcbNivel;
+	private JComboBox<Materia> jcbMateria;
 	private JButton btnMateria;
 	private JButton btnVer;
 	private JLabel lblNewLabel_4;
@@ -53,6 +52,8 @@ public class PanelMateria extends JPanel {
 	private JTextField jtfCodigo;
 	private JTextField jtfUrl;
 	private JTextField jtfFecha;
+	private JLabel lblNewLabel_10;
+	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	/**
 	 * Crea el panel
@@ -60,7 +61,7 @@ public class PanelMateria extends JPanel {
 	public PanelMateria() {
 
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-//		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 0.0};
+		gbl_contentPane.columnWeights = new double[]{0.0, 1.0, 0.0};
 //		gbl_contentPane.columnWeights = new double[]{0.0, 1.0};
 //		gbl_contentPane.rowWeights = new double[]{0.0, 0.0, 0.0, 1.0};
 //		gbl_contentPane.columnWeights = new double[]{1.0, 1.0};
@@ -126,11 +127,7 @@ public class PanelMateria extends JPanel {
 		btnMateria = new JButton("Cargar materias");
 		btnMateria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					getMaterias();
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-				}
+				getMaterias();
 			}
 		});
 		GridBagConstraints gbc_btnMateria = new GridBagConstraints();
@@ -158,11 +155,7 @@ public class PanelMateria extends JPanel {
 		btnVer = new JButton("Ver materia");
 		btnVer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					cargar(ControladorMateria.getMateria(((Materia) jcbMateria.getSelectedItem()).getId()));
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-				}
+				cargar(ControladorMateria.getMateria(((Materia) jcbMateria.getSelectedItem()).getId()));
 			}
 		});
 		GridBagConstraints gbc_btnVer = new GridBagConstraints();
@@ -211,7 +204,7 @@ public class PanelMateria extends JPanel {
 		jtfNombre.setColumns(10);
 		GridBagConstraints gbc_jtfNombre = new GridBagConstraints();
 		gbc_jtfNombre.gridwidth = 2;
-		gbc_jtfNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_jtfNombre.insets = new Insets(0, 0, 5, 0);
 		gbc_jtfNombre.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtfNombre.gridx = 1;
 		gbc_jtfNombre.gridy = 6;
@@ -229,7 +222,7 @@ public class PanelMateria extends JPanel {
 		jtfCodigo.setColumns(10);
 		GridBagConstraints gbc_jtfCodigo = new GridBagConstraints();
 		gbc_jtfCodigo.gridwidth = 2;
-		gbc_jtfCodigo.insets = new Insets(0, 0, 5, 5);
+		gbc_jtfCodigo.insets = new Insets(0, 0, 5, 0);
 		gbc_jtfCodigo.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtfCodigo.gridx = 1;
 		gbc_jtfCodigo.gridy = 7;
@@ -247,7 +240,7 @@ public class PanelMateria extends JPanel {
 		jtfUrl.setColumns(10);
 		GridBagConstraints gbc_jtfUrl = new GridBagConstraints();
 		gbc_jtfUrl.gridwidth = 2;
-		gbc_jtfUrl.insets = new Insets(0, 0, 5, 5);
+		gbc_jtfUrl.insets = new Insets(0, 0, 5, 0);
 		gbc_jtfUrl.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtfUrl.gridx = 1;
 		gbc_jtfUrl.gridy = 8;
@@ -265,20 +258,29 @@ public class PanelMateria extends JPanel {
 		jtfFecha.setColumns(10);
 		GridBagConstraints gbc_jtfFecha = new GridBagConstraints();
 		gbc_jtfFecha.gridwidth = 2;
-		gbc_jtfFecha.insets = new Insets(0, 0, 5, 5);
+		gbc_jtfFecha.insets = new Insets(0, 0, 5, 0);
 		gbc_jtfFecha.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jtfFecha.gridx = 1;
 		gbc_jtfFecha.gridy = 9;
 		add(jtfFecha, gbc_jtfFecha);
 		
-		ckbMatricula = new JCheckBox("Admite matrícula");
+		ckbMatricula = new JCheckBox("");
 		ckbMatricula.setFont(new Font("Tahoma", Font.BOLD, 14));
 		GridBagConstraints gbc_ckbMatricula = new GridBagConstraints();
-		gbc_ckbMatricula.gridwidth = 2;
+		gbc_ckbMatricula.anchor = GridBagConstraints.EAST;
 		gbc_ckbMatricula.insets = new Insets(0, 0, 5, 5);
 		gbc_ckbMatricula.gridx = 0;
 		gbc_ckbMatricula.gridy = 10;
 		add(ckbMatricula, gbc_ckbMatricula);
+		
+		lblNewLabel_10 = new JLabel("Admite matrícula");
+		lblNewLabel_10.setFont(new Font("Tahoma", Font.BOLD, 14));
+		GridBagConstraints gbc_lblNewLabel_10 = new GridBagConstraints();
+		gbc_lblNewLabel_10.anchor = GridBagConstraints.WEST;
+		gbc_lblNewLabel_10.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_10.gridx = 1;
+		gbc_lblNewLabel_10.gridy = 10;
+		add(lblNewLabel_10, gbc_lblNewLabel_10);
 		
 		panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
@@ -293,11 +295,7 @@ public class PanelMateria extends JPanel {
 		btnSave = new JButton("Guardar");
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-					guardar();
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-				}
+				guardar();
 			}
 		});
 		panel.add(btnSave);
@@ -307,6 +305,7 @@ public class PanelMateria extends JPanel {
 	
 	/**
 	 * Método para cargar un registro
+	 * @param m
 	 */
 	private void cargar(Materia m) {
 		if (m != null) {
@@ -314,7 +313,6 @@ public class PanelMateria extends JPanel {
 			jtfNombre.setText(m.getNombre());
 			jtfCodigo.setText(m.getCodigo());
 			jtfUrl.setText(m.getUrl());
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			jtfFecha.setText(sdf.format(m.getFechaInicio()));
 			if (m.getMatricula() == 0) {
 				ckbMatricula.setSelected(false);
@@ -327,9 +325,8 @@ public class PanelMateria extends JPanel {
 	
 	/**
 	 * Método para guardar un registro
-	 * @throws ParseException 
 	 */
-	private void guardar() throws ParseException {
+	private void guardar() {
 		Materia m = new Materia();
 		int mayus = 0, minus = 0;
 		m.setId(Integer.parseInt(jtfId.getText()));
@@ -344,15 +341,20 @@ public class PanelMateria extends JPanel {
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "El código no es correcto");
+			return;
 		}
 		if (jtfUrl.getText().startsWith("http://") || jtfUrl.getText().startsWith("https://")) {
 			m.setUrl(jtfUrl.getText());
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "La URL no es correcta");
+			return;
 		}
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		m.setFechaInicio((Date) sdf.parse(jtfFecha.getText()));
+		try {
+			m.setFechaInicio(sdf.parse(jtfFecha.getText()));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 		if (ckbMatricula.isSelected()) {
 			m.setMatricula(1);
 		}
@@ -370,7 +372,7 @@ public class PanelMateria extends JPanel {
 	/**
 	 * Método para obtener los centros
 	 */
-	public static void getCentros() {
+	private void getCentros() {
 		jcbCentro.removeAllItems();
 		List<CentroEducativo> centros = ControladorCentroEducativo.getAll();
 		for (CentroEducativo c : centros) {
@@ -381,7 +383,7 @@ public class PanelMateria extends JPanel {
 	/**
 	 * Método para obtener los niveles
 	 */
-	public static void getNiveles() {
+	private void getNiveles() {
 		jcbNivel.removeAllItems();
 		List<Nivel> niveles = ControladorNivel.getAll(((CentroEducativo) jcbCentro.getSelectedItem()).getId());
 		for (Nivel n : niveles) {
@@ -391,9 +393,8 @@ public class PanelMateria extends JPanel {
 	
 	/**
 	 * Método para obtener los centros
-	 * @throws ParseException 
 	 */
-	public static void getMaterias() throws ParseException {
+	private void getMaterias() {
 		jcbMateria.removeAllItems();
 		List<Materia> materias = ControladorMateria.getAll(((Nivel) jcbNivel.getSelectedItem()).getId());
 		for (Materia m : materias) {
