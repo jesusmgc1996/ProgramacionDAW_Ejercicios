@@ -30,29 +30,28 @@ import javax.swing.JCheckBox;
 
 public class PanelMateria extends JPanel {
 
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
-	private JPanel panel;
-	private JButton btnSave;
-	private JComboBox<CentroEducativo> jcbCentro;
-	private JButton btnNivel;
-	private JComboBox<Nivel> jcbNivel;
-	private JComboBox<Materia> jcbMateria;
-	private JButton btnMateria;
-	private JButton btnVer;
 	private JLabel lblNewLabel_4;
 	private JLabel lblNewLabel_5;
 	private JLabel lblNewLabel_6;
 	private JLabel lblNewLabel_7;
 	private JLabel lblNewLabel_8;
 	private JLabel lblNewLabel_9;
+	private JLabel lblNewLabel_10;
+	private JPanel panel;
+	private JButton btnSave;
+	private JComboBox<CentroEducativo> jcbCentro;
+	private JComboBox<Nivel> jcbNivel;
+	private JComboBox<Materia> jcbMateria;
 	private JCheckBox ckbMatricula;
 	private JTextField jtfId;
 	private JTextField jtfNombre;
 	private JTextField jtfCodigo;
 	private JTextField jtfUrl;
 	private JTextField jtfFecha;
-	private JLabel lblNewLabel_10;
 	private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
 	/**
@@ -80,7 +79,7 @@ public class PanelMateria extends JPanel {
 		gbc_lblNewLabel_2.gridy = 0;
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
-		JLabel lblNewLabel = new JLabel("Centro:");
+		lblNewLabel = new JLabel("Centro:");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
@@ -89,26 +88,22 @@ public class PanelMateria extends JPanel {
 		add(lblNewLabel, gbc_lblNewLabel);
 		
 		jcbCentro = new JComboBox<CentroEducativo>();
+		jcbCentro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (jcbCentro.getSelectedItem() != null) {
+					getNiveles();
+				}
+			}
+		});
 		GridBagConstraints gbc_jcbCentro = new GridBagConstraints();
+		gbc_jcbCentro.gridwidth = 2;
 		gbc_jcbCentro.insets = new Insets(0, 0, 5, 5);
 		gbc_jcbCentro.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jcbCentro.gridx = 1;
 		gbc_jcbCentro.gridy = 1;
 		add(jcbCentro, gbc_jcbCentro);
 		
-		btnNivel = new JButton("Cargar niveles");
-		btnNivel.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				getNiveles();
-			}
-		});
-		GridBagConstraints gbc_btnNivel = new GridBagConstraints();
-		gbc_btnNivel.insets = new Insets(0, 0, 5, 0);
-		gbc_btnNivel.gridx = 2;
-		gbc_btnNivel.gridy = 1;
-		add(btnNivel, gbc_btnNivel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Nivel:");
+		lblNewLabel_1 = new JLabel("Nivel:");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
@@ -117,24 +112,20 @@ public class PanelMateria extends JPanel {
 		add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		jcbNivel = new JComboBox<Nivel>();
+		jcbNivel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (jcbNivel.getSelectedItem() != null) {
+					getMaterias();
+				}
+			}
+		});
 		GridBagConstraints gbc_jcbNivel = new GridBagConstraints();
+		gbc_jcbNivel.gridwidth = 2;
 		gbc_jcbNivel.insets = new Insets(0, 0, 5, 5);
 		gbc_jcbNivel.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jcbNivel.gridx = 1;
 		gbc_jcbNivel.gridy = 2;
 		add(jcbNivel, gbc_jcbNivel);
-		
-		btnMateria = new JButton("Cargar materias");
-		btnMateria.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				getMaterias();
-			}
-		});
-		GridBagConstraints gbc_btnMateria = new GridBagConstraints();
-		gbc_btnMateria.insets = new Insets(0, 0, 5, 0);
-		gbc_btnMateria.gridx = 2;
-		gbc_btnMateria.gridy = 2;
-		add(btnMateria, gbc_btnMateria);
 		
 		lblNewLabel_3 = new JLabel("Materia:");
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
@@ -145,24 +136,23 @@ public class PanelMateria extends JPanel {
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
 		
 		jcbMateria = new JComboBox<Materia>();
+		jcbMateria.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (jcbMateria.getSelectedItem() != null) {
+					cargar(ControladorMateria.getMateria(((Materia) jcbMateria.getSelectedItem()).getId()));
+				}
+				else {
+					limpiar();
+				}
+			}
+		});
 		GridBagConstraints gbc_jcbMateria = new GridBagConstraints();
+		gbc_jcbMateria.gridwidth = 2;
 		gbc_jcbMateria.insets = new Insets(0, 0, 5, 5);
 		gbc_jcbMateria.fill = GridBagConstraints.HORIZONTAL;
 		gbc_jcbMateria.gridx = 1;
 		gbc_jcbMateria.gridy = 3;
 		add(jcbMateria, gbc_jcbMateria);
-		
-		btnVer = new JButton("Ver materia");
-		btnVer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				cargar(ControladorMateria.getMateria(((Materia) jcbMateria.getSelectedItem()).getId()));
-			}
-		});
-		GridBagConstraints gbc_btnVer = new GridBagConstraints();
-		gbc_btnVer.insets = new Insets(0, 0, 5, 0);
-		gbc_btnVer.gridx = 2;
-		gbc_btnVer.gridy = 3;
-		add(btnVer, gbc_btnVer);
 		
 		lblNewLabel_4 = new JLabel("Datos de la materia");
 		lblNewLabel_4.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -316,6 +306,18 @@ public class PanelMateria extends JPanel {
 			jtfFecha.setText(sdf.format(m.getFechaInicio()));
 			ckbMatricula.setSelected(m.getMatricula());
 		}
+	}
+	
+	/**
+	 * Método para limpiar los datos
+	 */
+	private void limpiar() {
+		jtfId.setText("");
+		jtfNombre.setText("");
+		jtfCodigo.setText("");
+		jtfUrl.setText("");
+		jtfFecha.setText("");
+		ckbMatricula.setSelected(false);
 	}
 	
 	/**
