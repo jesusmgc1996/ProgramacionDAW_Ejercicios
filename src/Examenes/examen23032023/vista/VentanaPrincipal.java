@@ -342,20 +342,14 @@ public class VentanaPrincipal extends JFrame {
 		i.setId(Integer.parseInt(jtfId.getText()));
 		i.setDni(jtfDni.getText());
 		i.setNombreCompleto(jtfNombre.getText());
-		if (jtfFechaInicio.getText().isBlank()) {
-			i.setFechaInicioAlquiler(null);
-		}
-		else {
+		if (!jtfFechaInicio.getText().isBlank()) {
 			try {
 				i.setFechaInicioAlquiler(sdf.parse(jtfFechaInicio.getText()));
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
 		}
-		if (jtfFechaFin.getText().isBlank()) {
-			i.setFechaFinAlquiler(null);
-		}
-		else {
+		if (!jtfFechaFin.getText().isBlank()) {
 			try {
 				i.setFechaFinAlquiler(sdf.parse(jtfFechaFin.getText()));
 			} catch (ParseException e) {
